@@ -72,7 +72,7 @@ def human_review(state: EmailAgentState) -> Command[Literal["send_reply", END]]:
     # Now process the human decision
     if human_decision.get("approved"):
         return Command(
-            update={"daft_response": human_decision.get("edited_response", state.get('draft_response', ''))},
+            update={"draft_response": human_decision.get("edited_response", state.get('draft_response', ''))},
             goto="send_reply"
         )
     else:
